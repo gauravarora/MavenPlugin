@@ -25,9 +25,8 @@ public class TestDocMojoTest
 
     public void testLibDocForTxtResource()
             throws Exception {
-        executeLibdocWithPom("src/test/resources/pom-testdoc-txtfile.xml");
+        executeLibdocWithPom("testdoc", "src/test/resources/pom-testdoc-txtfile.xml");
         assertTrue(txtResourceLibDoc + " not found", new File(txtResourceLibDoc).exists());
 
     }
-
 }

@@ -25,14 +25,14 @@ public class LibDocMojoTest
 
     public void testLibDocForJavaResource()
             throws Exception {
-        executeLibdocWithPom("src/test/resources/pom-libdoc.xml");
+        executeLibdocWithPom("libdoc", "src/test/resources/pom-libdoc.xml");
         assertTrue(javalibLibDoc + " not found", new File(javalibLibDoc).exists());
 
     }
 
     public void testLibDocForTxtResource()
             throws Exception {
-        executeLibdocWithPom("src/test/resources/pom-libdoc-txtfile.xml");
+        executeLibdocWithPom("libdoc", "src/test/resources/pom-libdoc-txtfile.xml");
         assertTrue(htmlResourceLibDoc + " not found", new File(htmlResourceLibDoc).exists());
 
     }
@@ -40,21 +40,21 @@ public class LibDocMojoTest
     public void testLibDocForLibraryNamePython()
             throws Exception {
 
-        executeLibdocWithPom("src/test/resources/pom-libdoc-libraryname-python.xml");
+        executeLibdocWithPom("libdoc", "src/test/resources/pom-libdoc-libraryname-python.xml");
         assertTrue(mylibLibDoc + " not found", new File(mylibLibDoc).exists());
 
     }
 
     public void testLibDocForLibraryNamePythonWithPackage()
             throws Exception {
-        executeLibdocWithPom("src/test/resources/pom-libdoc-libraryname-python-subpackage.xml");
+        executeLibdocWithPom("libdoc", "src/test/resources/pom-libdoc-libraryname-python-subpackage.xml");
         assertTrue(mypackageMylibLibDoc + " not found", new File(mypackageMylibLibDoc).exists());
 
     }
 
     public void testLibDocForLibraryNameJava()
             throws Exception {
-        executeLibdocWithPom("src/test/resources/pom-libdoc-libraryname-java.xml");
+        executeLibdocWithPom("libdoc", "src/test/resources/pom-libdoc-libraryname-java.xml");
         assertTrue(javalibLibDoc + " not found", new File(javalibLibDoc).exists());
 
     }

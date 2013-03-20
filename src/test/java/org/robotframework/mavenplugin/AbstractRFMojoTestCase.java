@@ -2,6 +2,7 @@ package org.robotframework.mavenplugin;
 
 import java.io.File;
 
+import org.apache.maven.plugin.Mojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
@@ -11,15 +12,15 @@ import org.apache.maven.plugin.testing.AbstractMojoTestCase;
  * @version $Id$
  * @since 0.7.6
  */
-public class AbstractRFMojoTestCase extends AbstractMojoTestCase {
+public abstract class AbstractRFMojoTestCase extends AbstractMojoTestCase {
 
-    protected void executeLibdocWithPom(String pathToPom) throws Exception, MojoExecutionException, MojoFailureException {
+    void executeLibdocWithPom(String goal, String pathToPom) throws Exception, MojoExecutionException, MojoFailureException {
         File pom = getTestFile(pathToPom);
-        TestDocMojo mojo = (TestDocMojo) lookupMojo("testdoc", pom);
+        Mojo mojo = lookupMojo(goal, pom);
         mojo.execute();
     }
 
-    protected void deleteDocument(String documentation) throws Exception {
+    void deleteDocument(String documentation) throws Exception {
         File document = new File(documentation);
         if (document.exists()) {
             boolean deleted = document.delete();
@@ -28,5 +29,4 @@ public class AbstractRFMojoTestCase extends AbstractMojoTestCase {
             }
         }
     }
-
 }
