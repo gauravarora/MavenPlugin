@@ -31,8 +31,6 @@ public class TestDocConfiguration {
     public String[] generateRunArguments() {
         Arguments generatedArguments = new Arguments();
         generatedArguments.add("testdoc");
-//        generatedArguments.addNonEmptyStringToArguments(name, "--name");
-//        generatedArguments.addFileListToArguments(getExtraPathDirectoriesWithDefault(), "--pythonpath");
         generatedArguments.add(getLibraryOrResource());
         generatedArguments.add(getOutputPath());
         return generatedArguments.toArray();

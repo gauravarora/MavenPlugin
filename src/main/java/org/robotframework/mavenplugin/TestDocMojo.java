@@ -94,7 +94,7 @@ public class TestDocMojo
     /**
      * Default output directory. Effective if outputDirectory is empty. Cannot be overridden.
      *
-     * @parameter default-value="${project.build.directory}/robotframework/libdoc"
+     * @parameter default-value="${project.build.directory}/robotframework/testdoc"
      * @readonly
      */
     File defaultLibdocOutputDirectory;
