@@ -28,6 +28,9 @@ public class TestDocConfiguration {
     public String[] generateRunArguments() throws IOException {
         Arguments generatedArguments = new Arguments();
         generatedArguments.add("testdoc");
+        generatedArguments.addNonEmptyStringToArguments(title, "--title");
+        generatedArguments.addNonEmptyStringToArguments(name, "--name");
+        generatedArguments.addNonEmptyStringToArguments(doc, "--doc");
         generatedArguments.add(getDatasourceFile());
         generatedArguments.add(getOutputPath());
         return generatedArguments.toArray();
@@ -91,4 +94,19 @@ public class TestDocConfiguration {
      * source file or a resource file. For example <code>src/main/java/com/test/ExampleLib.java</code>
      */
     private String dataSourceFile;
+
+    /**
+     * Set the title of the generated documentation. Underscores in the title are converted to spaces. The default title is the name of the top level suite.
+     */
+    private String title;
+
+    /**
+     * Override the name of the top level test suite.
+     */
+    private String name;
+    
+    /**
+     * Override the documentation of the top level test suite.
+     */
+    private String doc;
 }

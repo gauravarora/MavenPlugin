@@ -18,6 +18,7 @@ package org.robotframework.mavenplugin;
  */
 
 import java.io.File;
+
 import java.io.IOException;
 
 import org.apache.maven.plugin.MojoExecutionException;
@@ -49,7 +50,9 @@ public class TestDocMojo
             throws IOException {
         testdoc.populateDefaults(this);
         testdoc.ensureOutputDirectoryExists();
-        RobotFramework.run(testdoc.generateRunArguments());
+        String[] args = testdoc.generateRunArguments();
+        getLog().debug("Run arguments -> " + args);
+        RobotFramework.run(args);
     }
 
     /**

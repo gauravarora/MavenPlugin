@@ -27,7 +27,6 @@ public class LibDocMojoTest
             throws Exception {
         executeLibdocWithPom("libdoc", "src/test/resources/pom-libdoc.xml");
         assertTrue(javalibLibDoc + " not found", new File(javalibLibDoc).exists());
-
     }
 
     public void testLibDocForTxtResource()
