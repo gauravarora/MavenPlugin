@@ -71,6 +71,11 @@ public class TestDocMojo
      * <li><code>outputDirectory</code>     Specifies the directory where documentation files are written.
      *                                      Considered to be relative to the ${basedir} of the project.
      *                                      Default ${project.build.directory}/robotframework/testdoc</li>
+     * <li><code>title</code>               Set the title of the generated documentation. Underscores in 
+     *                                      the title are converted to spaces. The default title is the 
+     *                                      name of the top level suite.</li>
+     * <li><code>name</code>                Override the name of the top level test suite.</li>
+     * <li><code>doc</code>                 Override the name of the top level test suite.</li>
      * </ul>
      *
      * Example:
