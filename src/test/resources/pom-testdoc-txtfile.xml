@@ -16,7 +16,7 @@
         <artifactId>robotframework-maven-plugin</artifactId>
         <configuration>
           <testdoc>
-            <libraryOrResourceFile>src/test/resources/robot-testdoc/invalid_login.txt</libraryOrResourceFile>
+            <dataSourceFile>src/test/resources/robot-testdoc/invalid_login.txt</dataSourceFile>
             <outputFile>invalid_login.html</outputFile>
           </testdoc>
         </configuration>

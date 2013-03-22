@@ -53,37 +53,27 @@ public class TestDocMojo
     }
 
     /**
-     * Library documentation configuration.
+     * Test case documentation configuration.
      *
      * Required settings:
      * <ul>
-     * <li><code>outputFile</code>          The name for the output file. Documentation output format is deduced from the file extension.</li>
-     * <li><code>libraryOrResourceFile</code>     Name or path of the documented library or resource file.
-     * <p/>
-     * Name must be in the same format as when used in Robot Framework test data, for example <code>BuiltIn</code> or
-     * <code>com.acme.FooLibrary</code>. When name is used, the library is imported the same as when running the tests.
-     * Use extraPathDirectories to set PYTHONPATH/CLASSPATH accordingly.
-     * <p/>
-     * Paths are considered relative to the location of <code>pom.xml</code> and must point to a valid Python/Java
-     * source file or a resource file. For example <code>src/main/python/test/ExampleLib.py</code>
-     * <p/>
-     * Note that you should preferably import java classes by classname, not path. Dynamic libraries will not be compiled correctly with path.</li>
+     * <li><code>outputFile</code>          The name for the output file.</li>
+     * <li><code>dataSourceFile</code>     Name or path of the documented test case(s).</li>
      * </ul>
+     * <p/>
+     * Paths are considered relative to the location of <code>pom.xml</code> and must point to a valid test case file. 
+     * For example <code>src/main/test/ExampleTest.txt</code>
      * Optional settings:
      * <ul>
      * <li><code>outputDirectory</code>     Specifies the directory where documentation files are written.
      *                                      Considered to be relative to the ${basedir} of the project.
-     *                                      Default ${project.build.directory}/robotframework/libdoc</li>
-     * <li><code>name</code>                Sets the name of the documented library or resource.</li>
-     * <li><code>version</code>             Sets the version of the documented library or resource.</li>
-     * <li><code>extraPathDirectories</code> A directory to be added to the PYTHONPATH/CLASSPATH when creating documentation.
-     * e.g. src/main/java/com/test/</li>
+     *                                      Default ${project.build.directory}/robotframework/testdoc</li>
      * </ul>
      *
      * Example:
      * <pre><![CDATA[<libdoc>
-     *      <outputFile>MyLib.html</outputFile>
-     *      <libraryOrResourceFile>com.mylib.MyLib</libraryOrResourceFile>
+     *      <outputFile>MyTests.html</outputFile>
+     *      <dataSourceFile>src/test/resources/MyTests.txt</dataSourceFile>
      * </libdoc>]]></pre>
      *
      * @parameter
@@ -97,15 +87,5 @@ public class TestDocMojo
      * @parameter default-value="${project.build.directory}/robotframework/testdoc"
      * @readonly
      */
-    File defaultLibdocOutputDirectory;
-
-    /**
-     * The default location where extra packages will be searched. Effective if extraPathDirectories attribute is not
-     * used. Cannot be overridden.
-     *
-     * @parameter default-value="${project.basedir}/src/test/resources/robotframework/libraries"
-     * @readonly
-     */
-    File libdocDefaultExtraPath;
-
+    File defaultTestdocOutputDirectory;
 }

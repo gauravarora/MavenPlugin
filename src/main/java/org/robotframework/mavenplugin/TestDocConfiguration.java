@@ -19,42 +19,30 @@ package org.robotframework.mavenplugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 import org.codehaus.plexus.util.StringUtils;
 
 
 public class TestDocConfiguration {
 
-    public String[] generateRunArguments() {
+    public String[] generateRunArguments() throws IOException {
         Arguments generatedArguments = new Arguments();
         generatedArguments.add("testdoc");
-        generatedArguments.add(getLibraryOrResource());
+        generatedArguments.add(getDatasourceFile());
         generatedArguments.add(getOutputPath());
         return generatedArguments.toArray();
     }
 
-    private String getLibraryOrResource() {
-        File libOrResource = new File(libraryOrResourceFile);
-        if (libOrResource.exists()) {
-            return libOrResource.getAbsolutePath();
-        } else {
-            return libraryOrResourceFile;
+    private String getDatasourceFile() throws IOException {
+        File libOrResource = new File(dataSourceFile);
+        if (!libOrResource.exists()) {
+            throw new IOException("Data source file " + dataSourceFile + " does not exist");
         }
+        return libOrResource.getAbsolutePath();
     }
 
     private String getOutputPath() {
         return outputDirectory + File.separator + outputFile.getName();
-    }
-
-    private List<File> getExtraPathDirectoriesWithDefault() {
-        if (extraPathDirectories == null) {
-            return Collections.singletonList(defaultExtraPath);
-        } else {
-            return Arrays.asList(extraPathDirectories);
-        }
     }
 
     public void ensureOutputDirectoryExists()
@@ -77,8 +65,7 @@ public class TestDocConfiguration {
 
     public void populateDefaults(TestDocMojo defaults) {
         if (this.outputDirectory == null)
-            this.outputDirectory = defaults.defaultLibdocOutputDirectory;
-        this.defaultExtraPath = defaults.libdocDefaultExtraPath;
+            this.outputDirectory = defaults.defaultTestdocOutputDirectory;
     }
 
     /**
@@ -94,11 +81,6 @@ public class TestDocConfiguration {
     private File outputFile;
 
     /**
-     * Sets the name of the documented library or resource.
-     */
-    private String name;
-
-    /**
      * Name or path of the documented library or resource file.
      * <p/>
      * Name must be in the same format as when used in Robot Framework test data, for example <code>BuiltIn</code> or
@@ -108,14 +90,5 @@ public class TestDocConfiguration {
      * Paths are considered relative to the location of <code>pom.xml</code> and must point to a valid Python/Java
      * source file or a resource file. For example <code>src/main/java/com/test/ExampleLib.java</code>
      */
-    private String libraryOrResourceFile;
-
-    /**
-     * A directory to be added to the PYTHONPATH/CLASSPATH when creating documentation.
-     * <p/>
-     * e.g. src/main/java/com/test/
-     */
-    private File[] extraPathDirectories;
-
-    private File defaultExtraPath;
+    private String dataSourceFile;
 }
