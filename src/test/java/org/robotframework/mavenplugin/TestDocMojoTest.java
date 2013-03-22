@@ -7,26 +7,19 @@ public class TestDocMojoTest
         extends AbstractRFMojoTestCase {
 
     private final String outputDirectory = "target/robotframework/testdoc/";
-    private final String txtResourceLibDoc = outputDirectory + "invalid_login.html";
-    private final String javalibLibDoc = outputDirectory + "ExampleLib.html";
-    private final String mylibLibDoc = outputDirectory + "mylib.html";
-    private final String mypackageMylibLibDoc = outputDirectory + "mypackage.mylib.html";
+    private final String txtResourceTestDoc = outputDirectory + "invalid.html";
 
     protected void setUp()
             throws Exception {
         super.setUp();
         File outputDir = new File(outputDirectory);
         outputDir.mkdirs();
-        deleteDocument(txtResourceLibDoc);
-        deleteDocument(javalibLibDoc);
-        deleteDocument(mylibLibDoc);
-        deleteDocument(mypackageMylibLibDoc);
+        deleteDocument(txtResourceTestDoc);
     }
 
     public void testLibDocForTxtResource()
             throws Exception {
         executeLibdocWithPom("testdoc", "src/test/resources/pom-testdoc-txtfile.xml");
-        assertTrue(txtResourceLibDoc + " not found", new File(txtResourceLibDoc).exists());
-
+        assertTrue(txtResourceTestDoc + " not found", new File(txtResourceTestDoc).exists());
     }
 }

@@ -17,7 +17,7 @@
         <configuration>
           <testdoc>
             <dataSourceFile>src/test/resources/robot-testdoc/invalid_login.txt</dataSourceFile>
-            <outputFile>invalid_login.html</outputFile>
+            <outputFile>invalid.html</outputFile>
           </testdoc>
         </configuration>
       </plugin>
