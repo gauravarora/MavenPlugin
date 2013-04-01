@@ -277,6 +277,7 @@ public class AcceptanceTestMojo extends AbstractMojoWithLoadedClasspath {
         if (extraPathDirectories == null) {
             generatedArguments.addFileToArguments(defaultExtraPath, "-P");
         } else {
+            getLog().error("Adding " + extraPathDirectories);
             generatedArguments.addFileListToArguments(Arrays.asList(extraPathDirectories), "-P");
         }
 
